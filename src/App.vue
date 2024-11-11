@@ -4,16 +4,25 @@
   import LoginForm from './components/LoginForm.vue';
   import { auth } from './config/firebaseConfig';
   import { ref } from 'vue';
+  import { RouterLink, RouterView, useRouter } from 'vue-router';
+
 
   let hay_login = ref(false)
+  const router = useRouter()
+
   auth.onAuthStateChanged((user)=>{
      hay_login.value = (user!=null)
      console.log("on auth state changed ", user)
+     if (hay_login.value) {
+      router.push('/');
+    } else {
+      router.push('/login');
+    }
   })
 
 </script>
 
 <template>
-  <login-form v-if="!hay_login"/>
-  <lista-compra v-else/>
+  <!-- mostrar "lo que diga el router" para la ruta actual -->
+  <RouterView />
 </template>

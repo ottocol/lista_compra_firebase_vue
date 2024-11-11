@@ -25,4 +25,8 @@
         
         <button type="submit">Iniciar sesión</button>
     </form>
+    <!-- un enlace gestionado por el router -->
+    <RouterLink to="/about">
+        Acerca de la app
+    </RouterLink>  
 </template>
